@@ -1,0 +1,44 @@
+<div class="container mt-4">
+    <h2>Popular Movies</h2>
+
+    @if (isLoading) {
+    <div class="text-center my-5">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    } @else if (error) {
+    <div class="alert alert-danger">
+        {{ error }}
+    </div>
+    } @else {
+    <div class="row">
+        @for (movie of movies; track movie.id) {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 movie-card">
+                <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" class="card-img-top"
+                    [alt]="movie.title" (error)="handleImageError($event)" />
+                <div class="card-body">
+                    <h5 class="card-title">{{ movie.title }}</h5>
+                    <p class="card-text text-muted">
+                        {{ movie.release_date | date: 'yyyy' }} | Rating:
+                        {{ movie.vote_average }}/10
+                    </p>
+                    <p class="card-text">{{ movie.overview | truncate: 100 }}</p>
+                </div>
+                <div class="card-footer bg-transparent">
+                    <button class="btn btn-sm" [class.btn-danger]="isFavorite(movie)"
+                        [class.btn-outline-danger]="!isFavorite(movie)" (click)="toggleFavorite(movie)">
+                        <i class="bi bi-heart-fill"></i>
+                        {{ isFavorite(movie) ? 'Remove from Favorites' : 'Add to Favorites' }}
+                    </button>
+                    <a [routerLink]="['/movie', movie.id]" class="btn btn-outline-primary btn-sm ms-2">
+                        Details
+                    </a>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+    }
+</div>
