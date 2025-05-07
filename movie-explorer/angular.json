@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/movie-explorer",
+            "outputPath": "dist/movie-explorer/browser",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "baseHref": "/",
@@ -40,7 +40,7 @@
           },
           "configurations": {
             "production": {
-              "outputPath": "dist/movie-explorer/browser",
+              "outputPath": "dist/movie-explorer",
               "baseHref": "/",
               "deployUrl": "/",
               "budgets": [
