@@ -1,15 +1,21 @@
 {
   "version": 2,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/browser/index.html"
+    }
+  ],
   "builds": [
     {
-      "src": "dist/movie-explorer/**",
+      "src": "dist/movie-explorer/browser/**",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/.*",
-      "dest": "/index.html",
+      "dest": "/browser/index.html",
       "methods": ["GET"]
     },
     {
