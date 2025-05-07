@@ -1,14 +1,5 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "dist/movie-explorer/browser/**/*",
-      "use": "@vercel/static",
-      "config": {
-        "distDir": "dist/movie-explorer/browser"
-      }
-    }
-  ],
   "routes": [
     {
       "src": "/(.*)",
