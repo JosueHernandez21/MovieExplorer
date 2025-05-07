@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "postbuild": "copy vercel.json dist\\movie-explorer\\browser\\ || true",
+    "postbuild": "cp vercel.json dist/movie-explorer/browser/ || true",
     "deploy": "ng build --configuration production && vercel --prod"
   },
   "private": true,
