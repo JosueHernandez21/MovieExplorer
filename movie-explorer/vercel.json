@@ -2,22 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "dist/movie-explorer/browser/**",
+      "src": "dist/movie-explorer/browser/**/*",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/.*",
-      "dest": "/browser/index.html",
-      "methods": ["GET"]
-    },
-    {
-      "src": "/assets/(.*)",
-      "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
-      },
-      "continue": true
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
