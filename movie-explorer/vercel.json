@@ -1,11 +1,5 @@
 {
   "version": 2,
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/browser/index.html"
-    }
-  ],
   "builds": [
     {
       "src": "dist/movie-explorer/browser/**",
