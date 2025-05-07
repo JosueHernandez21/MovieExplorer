@@ -1,6 +1,23 @@
 {
   "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/angular",
+      "config": {
+        "distDir": "./dist/movie-explorer/browser"
+      }
+    }
+  ],
   "routes": [
+    {
+      "src": "/_next/static/(.*)",
+      "dest": "/_next/static/$1"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
     {
       "src": "/(.*)",
       "dest": "/index.html",
@@ -8,10 +25,5 @@
         "Cache-Control": "no-cache"
       }
     }
-  ],
-  "build": {
-    "env": {
-      "NODE_VERSION": "18.x"
-    }
-  }
+  ]
 }
