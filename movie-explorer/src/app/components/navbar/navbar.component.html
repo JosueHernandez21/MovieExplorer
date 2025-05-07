@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/">Movie Explorer</a>
+        <button class="navbar-toggler" type="button" (click)="toggleMenu()" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" [class.show]="!isMenuCollapsed">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/popular" routerLinkActive="active">Popular</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/search" routerLinkActive="active">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/favorites" routerLinkActive="active">Favorites</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
