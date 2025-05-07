@@ -1,0 +1,35 @@
+<div class="container mt-4">
+    <h2>Your Favorite Movies</h2>
+
+    @if (favorites.length === 0) {
+    <div class="alert alert-info mt-4">
+        You haven't added any movies to your favorites yet.
+    </div>
+    } @else {
+    <div class="row">
+        @for (movie of favorites; track movie.id) {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" class="card-img-top"
+                    [alt]="movie.title" />
+                <div class="card-body">
+                    <h5 class="card-title">{{ movie.title }}</h5>
+                    <p class="card-text text-muted">
+                        {{ movie.release_date | date: 'yyyy' }} | Rating:
+                        {{ movie.vote_average }}/10
+                    </p>
+                </div>
+                <div class="card-footer bg-transparent">
+                    <button class="btn btn-danger btn-sm" (click)="removeFavorite(movie)">
+                        <i class="bi bi-trash-fill"></i> Remove
+                    </button>
+                    <a [routerLink]="['/movie', movie.id]" class="btn btn-primary btn-sm ms-2">
+                        Details
+                    </a>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+    }
+</div>
