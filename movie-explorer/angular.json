@@ -20,6 +20,8 @@
             "outputPath": "dist/movie-explorer",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "baseHref": "/",
+            "deployUrl": "/",
             "polyfills": [
               "zone.js"
             ],
@@ -38,6 +40,8 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/",
+              "deployUrl": "/",
               "budgets": [
                 {
                   "type": "initial",
