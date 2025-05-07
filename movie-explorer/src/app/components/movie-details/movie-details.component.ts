@@ -52,4 +52,10 @@ export class MovieDetailsComponent implements OnInit {
   getVoteAverage(): number {
     return this.movie ? parseFloat(this.movie.vote_average.toFixed(1)) : 0;
   }
+
+  getPosterUrl(path: string | null): string {
+    return path 
+      ? `https://image.tmdb.org/t/p/w500${path}`
+      : 'assets/no-image.jpg';
+  }
 }
