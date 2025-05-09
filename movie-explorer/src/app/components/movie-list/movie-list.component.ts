@@ -37,7 +37,7 @@ export class MovieListComponent implements OnInit {
     // Ejemplo de forkJoin (rxjs operator)
     forkJoin([
       this.movieService.getPopularMovies(),
-      this.movieService.getPopularMovies() // Simulando múltiples llamadas
+      this.movieService.getPopularMovies() // Simulando múltiples llamadas en un entorno prod seria mas como una llamada a un endpoint diferente
     ]).subscribe({
       next: ([movies1, movies2]) => {
         this.movies = [...movies1, ...movies2].slice(0, 20); // Limitar a 20 películas
