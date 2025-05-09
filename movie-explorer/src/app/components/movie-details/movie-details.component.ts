@@ -28,11 +28,11 @@ export class MovieDetailsComponent implements OnInit {
     
     if (id) {
       this.movieService.getMovieDetailsAsPromise(+id)
-        .then(movie => {
+        .then(movie => { // Callback de éxito
           this.movie = movie;
           this.isLoading = false;
         })
-        .catch(err => {
+        .catch(err => { // Callback de fallo
           this.error = 'Failed to load movie details.';
           this.isLoading = false;
           console.error(err);
