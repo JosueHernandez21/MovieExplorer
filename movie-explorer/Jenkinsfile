@@ -1,4 +1,4 @@
-pipeline {
+pipeline { 
     agent any
 
     tools {
@@ -10,7 +10,7 @@ pipeline {
         stage('Clonar repositorio') {
             steps {
                 git branch: 'develop',
-                    url: 'https://github.com/JosueHernandez21/MovieExplorer.git'
+                    url: 'https://github.com/JosueHernandez21/MovieExplorer.git' 
             }
         }
 
