@@ -13,18 +13,6 @@ pipeline {
 
     stages { 
 
-        stage('Instalar dependencias') {
-            steps {
-                bat 'npm install'
-            }
-        }
-
-        stage('Build Angular') {
-            steps {
-                bat 'npm run build -- --configuration=production'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 bat 'docker build -t %IMAGE_NAME% .'
