@@ -5,6 +5,12 @@ pipeline {
         nodejs 'Node18'
     }
 
+    environment {
+        IMAGE_NAME = 'movie-explorer'
+        CONTAINER_NAME = 'movie-explorer'
+        PORT = '8081'
+    }
+
     stages {
 
         stage('Instalar dependencias') {
@@ -19,9 +25,19 @@ pipeline {
             }
         }
 
-        stage('Archivar artefacto') {
+        stage('Build Docker Image') {
             steps {
-                archiveArtifacts artifacts: 'dist/**', fingerprint: true
+                bat 'docker build -t %IMAGE_NAME% .'
+            }
+        }
+
+        stage('Deploy Container') {
+            steps {
+                bat '''
+                docker stop %CONTAINER_NAME% || exit 0
+                docker rm %CONTAINER_NAME% || exit 0
+                docker run -d -p %PORT%:80 --name %CONTAINER_NAME% %IMAGE_NAME%
+                '''
             }
         }
     }
