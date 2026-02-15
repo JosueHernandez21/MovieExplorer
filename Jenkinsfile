@@ -7,13 +7,6 @@ pipeline {
 
     stages {
 
-        stage('Clonar repositorio') {
-            steps {
-                git branch: 'develop',
-                    url: 'https://github.com/JosueHernandez21/MovieExplorer.git' 
-            }
-        }
-
         stage('Instalar dependencias') {
             steps {
                 bat 'npm install'
