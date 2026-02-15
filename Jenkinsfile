@@ -20,7 +20,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 bat 'npm install'
-                bat 'npm run test -- --watch=false --browsers=ChromeHeadless'
+                bat 'set CHROME_BIN="C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" && npm run test -- --watch=false --browsers=ChromeHeadless --no-sandbox --disable-gpu'
             }
         }
 
