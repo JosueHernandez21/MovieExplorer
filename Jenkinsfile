@@ -11,7 +11,7 @@ pipeline {
         PORT = '8081'
     }
 
-    stages {
+    stages { 
 
         stage('Instalar dependencias') {
             steps {
