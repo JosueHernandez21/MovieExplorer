@@ -12,42 +12,24 @@ module.exports = function (config) {
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
-    client: {
-      jasmine: {
-        random: false
-      },
-      clearContext: false
-    },
-
-    jasmineHtmlReporter: {
-      suppressAll: true
-    },
-
-    coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/movie-explorer'),
-      subdir: '.',
-      reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
-      ]
-    },
-
-    reporters: ['progress', 'kjhtml'],
 
     customLaunchers: {
       ChromeHeadlessCI: {
-        base: 'ChromeHeadless',
+        base: 'Chrome',
         flags: [
-          '--no-sandbox',
+          '--headless',
           '--disable-gpu',
-          '--disable-dev-shm-usage'
+          '--no-sandbox',
+          '--remote-debugging-port=9222'
         ]
       }
     },
 
-    browsers: ['ChromeHeadlessCI'],
+    browsers: ['ChromeHeadlessCI'], // 👈 FORZADO
 
     singleRun: true,
-    restartOnFileChange: false
+    restartOnFileChange: false,
+
+    reporters: ['progress'],
   });
 };
