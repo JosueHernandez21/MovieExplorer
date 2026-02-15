@@ -1,6 +1,10 @@
 pipeline { 
     agent any
 
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10'))
+    }
+
     tools {
         nodejs 'Node18'
     }
@@ -13,9 +17,16 @@ pipeline {
 
     stages { 
 
+        stage('Run Tests') {
+            steps {
+                bat 'npm install'
+                bat 'npm run test -- --watch=false --browsers=ChromeHeadless'
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t %IMAGE_NAME% .'
+                bat 'docker build -t %IMAGE_NAME%:%BUILD_NUMBER% .'
             }
         }
 
@@ -24,7 +35,7 @@ pipeline {
                 bat '''
                 docker stop %CONTAINER_NAME% || exit 0
                 docker rm %CONTAINER_NAME% || exit 0
-                docker run -d -p %PORT%:80 --name %CONTAINER_NAME% %IMAGE_NAME%
+                docker run -d -p %PORT%:80 --name %CONTAINER_NAME% %IMAGE_NAME%:%BUILD_NUMBER%
                 '''
             }
         }
