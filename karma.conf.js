@@ -3,6 +3,7 @@
 
 module.exports = function (config) {
   config.set({
+    port: 9876,
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
@@ -25,7 +26,7 @@ module.exports = function (config) {
       }
     },
 
-    browsers: ['ChromeHeadlessCI'], // 👈 FORZADO
+    browsers: ['ChromeHeadlessCI'],
 
     singleRun: true,
     restartOnFileChange: false,
